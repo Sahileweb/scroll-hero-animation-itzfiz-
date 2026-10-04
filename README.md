@@ -2,9 +2,7 @@
 
 A hero section where a top-down car drives across the screen as you scroll. The car, the green progress trail, the spinning tyres and the text reveal are all controlled by scroll position, not by time.
 
-- **Live demo:** `<add your GitHub Pages link>`
-- **Repository:** `<add your repo link>`
-- **Reference:** https://paraschaturvedi.github.io/car-scroll-animation
+- **Live demo:** `https://sahileweb.github.io/scroll-hero-animation-itzfiz-/`
 
 ## Tech stack
 
@@ -69,7 +67,3 @@ Open `index.html` in a browser, or serve the folder with a local server (for exa
 3. Set **Source** to **Deploy from a branch**, then choose branch `main` and folder `/ (root)`.
 4. Open the link shown at the top of the Pages settings.
 
-## Notes
-
-- The main page file must be named `index.html`, in lowercase, or GitHub Pages will show a 404.
-- Tailwind is loaded from the CDN to keep the project a single static page. A production setup would use the Tailwind CLI instead.
