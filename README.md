@@ -90,7 +90,7 @@ The animation adapts to different screen sizes:
 ├── index.html
 ├── README.md
 └── assets/
-    └── car.webp
+    └── car.png
 ```
 
 ## Run Locally
