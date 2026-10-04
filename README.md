@@ -1,18 +1,31 @@
 # Scroll-Driven Hero Section Animation
 
-A hero section where a top-down car drives across the screen as you scroll. The car, the green progress trail, the spinning tyres and the text reveal are all controlled by scroll position, not by time.
+A premium scroll-driven hero section where a top-down car drives across the screen as the user scrolls.
 
-- **Live demo:** `https://sahileweb.github.io/scroll-hero-animation-itzfiz-/`
+The **car, green progress trail, spinning tyres, and text reveals are all controlled by scroll position rather than time-based autoplay**.
 
-## Tech stack
+## Live Demo
 
-- HTML, CSS, JavaScript
-- [GSAP](https://gsap.com/) and ScrollTrigger (loaded from cdnjs)
-- Tailwind CSS (CDN) for layout and typography
+[View Live Demo](https://sahileweb.github.io/scroll-hero-animation-itzfiz-/)
 
-## How it works
+## Tech Stack
 
-All the scroll animation lives in one GSAP timeline with a single `ScrollTrigger`:
+* HTML
+* CSS
+* JavaScript
+* GSAP
+* GSAP ScrollTrigger
+* Tailwind CSS
+
+GSAP and ScrollTrigger are loaded via CDN, with Tailwind CSS used for layout and typography.
+
+## Features
+
+### Scroll-Driven Animation
+
+The hero section is pinned while the user scrolls through the animation.
+
+A single GSAP timeline controls the main interaction using ScrollTrigger:
 
 ```js
 scrollTrigger: {
@@ -21,49 +34,82 @@ scrollTrigger: {
   end: () => "+=" + innerHeight * (innerWidth < 768 ? 1.2 : 1.8),
   pin: true,
   scrub: 1,
-  invalidateOnRefresh: true,
+  invalidateOnRefresh: true
 }
 ```
 
-- **Pinned hero:** the hero stays fixed while the user scrolls through the animation.
-- **Scrub:** `scrub: 1` ties the timeline to scroll progress with about one second of smoothing. Scrolling back up reverses everything.
-- **Car:** moves from the left end of the road to the right end (`xPercent` 0 to 100). The wrapper is exactly "road width minus car width" wide, so the car stops at the road's end at any screen size.
-- **Green trail:** a bar that grows with `scaleX` on the same timeline, so it stays behind the car.
-- **Tyres:** four tyres sit behind the car image. Their tread bars scroll in step with the distance travelled, so the tyres look like they are rolling. An amber marker bar makes the direction easy to follow.
-- **Text reveal:** hidden at the start, then revealed in this order as the car moves:
-  `WELCOME` → `98%` → `3x` → `ITZ` → `45%` → `FIZZ` → `120+`
-- **Intro:** on page load only the car and road fade in. The text stays hidden until scroll reveals it.
+### Car Movement
+
+The top-down car travels from the left side of the road to the right side as the user scrolls.
+
+Scrolling back up smoothly reverses the animation.
+
+### Green Progress Trail
+
+A green trail grows behind the car according to scroll progress, creating a clear visual connection between the user's scroll position and the animation.
+
+### Rolling Tyres
+
+Four tyres are positioned behind the car image. Their tread animation progresses with the car's movement to create a rolling effect.
+
+### Text Reveal
+
+The text remains hidden initially and is progressively revealed as the car moves:
+
+```text
+WELCOME → 98% → 3x → ITZ → 45% → FIZZ → 120+
+```
+
+### Intro Animation
+
+On page load, the car and road fade in subtly.
+
+The main text remains hidden until the user begins scrolling, keeping the scroll interaction as the primary focus.
 
 ## Performance
 
-- Only `transform` and `opacity` are animated, so there is no layout reflow while scrolling.
-- No custom scroll listeners. ScrollTrigger handles the updates.
-- `prefers-reduced-motion` is respected: the animation is skipped and everything is shown.
+* Uses `transform` and `opacity` for animations to minimize layout reflow.
+* No custom scroll event listeners.
+* ScrollTrigger handles scroll-based updates.
+* `scrub` provides smooth interpolation between scroll position and animation progress.
+* `prefers-reduced-motion` is respected, displaying the content without the animation for users who prefer reduced motion.
 
-## Responsive behaviour
+## Responsive Design
 
-- Car size is set with a CSS variable (`--car-w`) at three breakpoints.
-- The scroll distance is shorter on mobile.
-- Content is lifted above the car so the text never sits behind the tyres.
+The animation adapts to different screen sizes:
 
-## Project structure
+* Responsive car sizing using CSS variables
+* Shorter scroll distance on mobile
+* Adjusted content positioning for smaller screens
+* Car and road scale appropriately across breakpoints
 
-```
+## Project Structure
+
+```text
 .
 ├── index.html
 ├── README.md
 └── assets/
-    └── car.webp      # top-view car, cropped and rotated to face right
+    └── car.webp
 ```
 
-## Run locally
+## Run Locally
 
-Open `index.html` in a browser, or serve the folder with a local server (for example the VS Code Live Server extension). Keep the `assets` folder next to `index.html`, or the car image will not load.
+Clone or download the repository and open `index.html` in a browser.
 
-## Deploy on GitHub Pages
+For the best experience, use a local development server such as the **VS Code Live Server extension**.
 
-1. Push `index.html` and the `assets` folder to the root of a public repository.
+Make sure the `assets` folder remains next to `index.html` so the car image loads correctly.
+
+## Deploy to GitHub Pages
+
+1. Push `index.html` and the `assets` folder to the root of a public GitHub repository.
 2. Go to **Settings → Pages**.
-3. Set **Source** to **Deploy from a branch**, then choose branch `main` and folder `/ (root)`.
-4. Open the link shown at the top of the Pages settings.
+3. Under **Build and deployment**, select **Deploy from a branch**.
+4. Select the `main` branch and `/ (root)` folder.
+5. Save the settings.
+6. Open the GitHub Pages URL provided by GitHub.
 
+
+
+**Created by Sahil**
